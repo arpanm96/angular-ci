@@ -1,14 +1,13 @@
-language:node_js
-node_js: "9"
+language: node_js
+node_js:
+    - "9"
 
 branches:
-  only:
-    master
+    only: master
 
 before_script:
-  - npm install -g @angular/cli
+    - npm install -g @angular/cli
 
 script:
- - ng lint
- - ng build
-
+    - ng lint
+    - ng build
