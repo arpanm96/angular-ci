@@ -6,7 +6,6 @@ branches:
     only: master
 
 before_script:
-    - cd test-app
     - npm install -g @angular/cli
     - npm install --save-dev @angular-devkit/build-angular
 
