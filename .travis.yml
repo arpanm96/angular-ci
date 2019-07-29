@@ -22,10 +22,13 @@ jobs:
           name: Unit Test
           script: ng test --watch=false --browsers=ChromeHeadless
         - stage: Test
+          name: Functional Test
           before_install:
+              - sudo apt-get update
               - sudo apt-get install -y google-chrome-stable
               - echo google-chrome --version
-          name: Functional Test
+          before_script:
+              - npm install chromedriver@75.0.3770.142 --chromedriver-force-download
           script: ng e2e
         - stage: Deploy
           script: echo "Deploying to https://arpanm96.github.io/angular-ci/"
