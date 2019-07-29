@@ -18,8 +18,12 @@ jobs:
           script:
               - ng lint
               - ng build --prod --base-href https://arpanm96.github.io/angular-ci/
-        - stage: Unit Test
+        - stage: Test
+          name: Unit Test
           script: ng test --watch=false --browsers=ChromeHeadless
+        - stage: Test
+          name: Functional Test
+          script: ng e2e
         - stage: Deploy
           script: echo "Deploying to https://arpanm96.github.io/angular-ci/"
           deploy:
