@@ -22,6 +22,9 @@ jobs:
           name: Unit Test
           script: ng test --watch=false --browsers=ChromeHeadless
         - stage: Test
+          before_install:
+              - sudo apt-get install -y google-chrome-stable
+              - echo google-chrome --version
           name: Functional Test
           script: ng e2e
         - stage: Deploy
