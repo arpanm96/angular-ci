@@ -9,15 +9,20 @@ before_script:
     - npm install -g @angular/cli
     - npm install --save-dev @angular-devkit/build-angular
 
-script:
-    - ng lint
-    - ng test --watch=false --browsers=ChromeHeadless
-    - ng build --prod --base-href https://arpanm96.github.io/angular-ci/
-
-deploy:
-    provider: pages
-    skip_cleanup: true
-    github_token: $GITHUB_TOKEN
-    local_dir: dist/test-app
-    on:
-        branch: master
+jobs:
+    include:
+        - stage: Build
+          script:
+              - ng lint
+              - ng build --prod --base-href https://arpanm96.github.io/angular-ci/
+        - stage: Unit Test
+          script: ng test --watch=false --browsers=ChromeHeadless
+        - stage: Deploy
+          script: echo "Deploying to https://arpanm96.github.io/angular-ci/"
+          deploy:
+              provider: pages
+              skip_cleanup: true
+              github_token: $GITHUB_TOKEN
+              local_dir: dist/test-app
+              on:
+                  branch: master
