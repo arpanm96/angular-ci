@@ -12,7 +12,7 @@ before_script:
 script:
     - ng lint
     - ng test --watch=false --browsers=ChromeHeadless
-    - ng build --prod --base-href https://arpanm96.github.io/test-app/
+    - ng build --prod --base-href https://arpanm96.github.io/angular-ci/
 
 deploy:
     provider: pages
