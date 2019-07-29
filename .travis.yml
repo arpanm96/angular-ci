@@ -5,6 +5,10 @@ node_js:
 branches:
     only: master
 
+cache:
+    directories:
+        - dist/test-app
+
 before_script:
     - npm install -g @angular/cli
     - npm install --save-dev @angular-devkit/build-angular
