@@ -2,6 +2,10 @@ language: node_js
 node_js:
     - "11.0.0"
 
+dist: trusty
+addons:
+    chrome: stable
+
 branches:
     only: master
 
@@ -26,6 +30,7 @@ jobs:
           before_install:
               - sudo apt-get update
               - sudo apt-get install -y google-chrome-stable
+              - echo $(google-chrome-stable --version)
           before_script:
               - npm install chromedriver@75 --chromedriver-force-download
           script: ng e2e
