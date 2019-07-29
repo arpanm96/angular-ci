@@ -26,7 +26,6 @@ jobs:
           before_install:
               - sudo apt-get update
               - sudo apt-get install -y google-chrome-stable
-              - echo google-chrome --version
           before_script:
               - npm install chromedriver@75.0.3770.142 --chromedriver-force-download
           script: ng e2e
