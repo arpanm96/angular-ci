@@ -16,5 +16,6 @@ steps:
       displayName: "Build NPM"
 
     - script: |
+          ng lint
           ng build --prod
       displayName: Build angular project
