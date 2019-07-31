@@ -19,3 +19,6 @@ steps:
           ng lint
           ng build --prod
       displayName: Build angular project
+
+    - script: ng test --watch=false --browsers=ChromeHeadless
+      displayName: Unit Test
