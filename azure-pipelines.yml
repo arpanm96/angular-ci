@@ -2,7 +2,7 @@ trigger:
     - master
 
 jobs:
-    - job: install_npm
+    - job: build
       pool:
           vmImage: "ubuntu-latest"
       steps:
@@ -10,27 +10,21 @@ jobs:
             inputs:
                 versionSpec: "11.0.0"
             displayName: Install Node.js
-    - job: build_node_modules
-      dependsOn: install_npm
-      steps:
           - script: npm install -g @angular/cli
             displayName: Install Angular CLI
           - script: npm install
             displayName: Install NPM packages
-    - job: build_project
-      dependsOn: build_node_modules
-      steps:
           - script: ng lint
             displayName: Check lint
           - script: ng build --prod
             displayName: Build angular project
     - job: unit_test
-      dependsOn: build_node_modules
+      dependsOn: build
       steps:
           - script: ng test --watch=false --browsers=ChromeHeadless
             displayName: Unit Test
     - job: e2e_test
-      dependsOn: build_node_modules
+      dependsOn: build
       steps:
           - script: ng e2e
             displayName: Functional Test
