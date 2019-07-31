@@ -22,3 +22,6 @@ steps:
 
     - script: ng test --watch=false --browsers=ChromeHeadless
       displayName: Unit Test
+
+    - script: ng e2e
+      displayName: Functional Test
