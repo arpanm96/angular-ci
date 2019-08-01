@@ -5,8 +5,6 @@ jobs:
     - job: build
       pool:
           vmImage: "ubuntu-latest"
-          workspaces: 
-            clean: outputs
       steps:
           - task: NodeTool@0
             inputs:
@@ -21,11 +19,15 @@ jobs:
           - script: ng build --prod
             displayName: Build angular project
     - job: unit_test
+      workspace: 
+        clean: outputs
       dependsOn: build
       steps:
           - script: ng test --watch=false --browsers=ChromeHeadless
             displayName: Unit Test
     - job: e2e_test
+      workspace: 
+        clean: outputs
       dependsOn: build
       steps:
           - script: ng e2e
