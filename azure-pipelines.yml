@@ -25,4 +25,7 @@ stages:
               displayName: Unit Test
             - script: ng e2e
               displayName: Functional Test
+            - task: PublishBuildArtifacts@1
+              inputs: 
+                PathtoPublish: '$(System.DefaultWorkingDirectory)'
 
