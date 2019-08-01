@@ -5,6 +5,8 @@ jobs:
     - job: build
       pool:
           vmImage: "ubuntu-latest"
+          workspaces: 
+            clean: outputs
       steps:
           - task: NodeTool@0
             inputs:
