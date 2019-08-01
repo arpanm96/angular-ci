@@ -19,6 +19,8 @@ jobs:
           - script: ng build --prod
             displayName: Build angular project
     - job: unit_test
+      pool:
+        vmImage: "ubuntu-latest"
       workspace: 
         clean: outputs
       dependsOn: build
@@ -26,6 +28,8 @@ jobs:
           - script: ng test --watch=false --browsers=ChromeHeadless
             displayName: Unit Test
     - job: e2e_test
+      pool:
+        vmImage: "ubuntu-latest"
       workspace: 
         clean: outputs
       dependsOn: build
