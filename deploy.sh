@@ -29,4 +29,4 @@ git status
 git commit -m "Update application"
 
 echo Pushing $path to $branch
-git push -f origin $branch
+git push -f origin $branch:$branch
