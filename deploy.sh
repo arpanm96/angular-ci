@@ -9,6 +9,7 @@ git fetch
 # path=$build.sourcesDirectory
 # echo Currently inside $path
 
+branch=gh-pages
 git checkout -t -b $branch origin/$branch
 
 path="TestApp/"
@@ -19,6 +20,5 @@ git add deploy/
 
 git commit -m "Update application"
 
-branch=gh-pages
 echo Pushing $path to $branch
 git push origin $branch

@@ -43,6 +43,11 @@ stages:
         steps:
           - checkout: self
             persistCredentials: 'true'
+          - task: DownloadBuildArtifacts@0
+            inputs:
+              downloadType: single
+              artifactName: TestApp
+              downloadPath: '$(Build.SourcesDirectory)'
           - task: ShellScript@2
             inputs:
               scriptPath: ./deploy.sh
