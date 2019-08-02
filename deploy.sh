@@ -12,10 +12,16 @@ git fetch
 branch=gh-pages
 git checkout -t -b $branch origin/$branch
 
-path="TestApp/"
+path="TestApp/dist/test-app/"
+echo Deleting existing files from Git 
+git rm -rf .
 git status
-echo Adding deploy/ to git
-git add $path
+
+echo Copying files to main directory from $path
+cp $path .
+
+echo Adding $path to git
+git add .
 
 echo Added files to git
 git status
