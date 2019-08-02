@@ -13,12 +13,14 @@ branch=gh-pages
 git checkout -t -b $branch origin/$branch
 
 path="TestApp/"
-ls && mkdir deploy && cp -rf $path deploy/ && ls deploy/
 git status
 echo Adding deploy/ to git
-git add deploy/
+git add $path
+
+echo Added files to git
+git status
 
 git commit -m "Update application"
 
 echo Pushing $path to $branch
-git push origin $branch
+git push -f origin $branch
