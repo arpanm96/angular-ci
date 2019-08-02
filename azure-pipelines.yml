@@ -9,6 +9,8 @@ stages:
         pool:
             vmImage: "ubuntu-latest"
         steps:
+            - checkout: self
+              persistCredentials: 'true'
             - task: NodeTool@0
               inputs:
                   versionSpec: "11.0.0"
@@ -36,3 +38,11 @@ stages:
               inputs: 
                 PathtoPublish: '$(Build.ArtifactStagingDirectory)'
                 ArtifactName: TestApp
+
+  - stage: deploy
+    jobs:
+      - job: deploy_job
+        steps:
+          - task: ShellScript@2
+            inputs:
+              scriptPath: ./deploy.sh
