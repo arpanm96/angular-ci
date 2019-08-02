@@ -19,7 +19,7 @@ stages:
               displayName: Install NPM packages
             - script: ng lint
               displayName: Check lint
-            - script: ng build --prod 
+            - script: ng build --prod --base-href https://arpanm96.github.io/angular-ci/ 
               displayName: Build angular project
             - script: ng test --watch=false --browsers=ChromeHeadless
               displayName: Unit Test
@@ -35,4 +35,4 @@ stages:
             - task: PublishBuildArtifacts@1
               inputs: 
                 PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-
+                ArtifactName: TestApp
