@@ -39,15 +39,18 @@ stages:
 
   - stage: deploy
     jobs:
-      - job: deploy_job
-        steps:
-          - checkout: self
-            persistCredentials: 'true'
-          - task: DownloadBuildArtifacts@0
-            inputs:
-              downloadType: single
-              artifactName: TestApp
-              downloadPath: '$(Build.SourcesDirectory)'
-          - task: ShellScript@2
-            inputs:
-              scriptPath: ./deploy.sh
+      - deployment: Github_Pages
+        strategy:
+          runOnce:
+            deploy: 
+              steps:
+                - checkout: self
+                  persistCredentials: 'true'
+                - task: DownloadBuildArtifacts@0
+                  inputs:
+                    downloadType: single
+                    artifactName: TestApp
+                    downloadPath: '$(Build.SourcesDirectory)'
+                - task: ShellScript@2
+                  inputs:
+                    scriptPath: ./deploy.sh
