@@ -10,7 +10,6 @@ git fetch
 # echo Currently inside $path
 
 branch=gh-pages
-git checkout -t -b $branch origin/$branch
 git remote -v && ls
 
 path="TestApp/dist/test-app/"
@@ -19,7 +18,7 @@ path="TestApp/dist/test-app/"
 git status
 
 echo Copying files to main directory from $path
-mv -rf $path/* .
+mv -f $path/* .
 
 echo Adding $path to git
 git add .
@@ -28,6 +27,7 @@ echo Added files to git
 git status
 
 git commit -m "Update application"
+git checkout -t -b $branch origin/$branch
 
 echo Pushing $path to $branch
 git push -f origin $branch
