@@ -1,4 +1,5 @@
 #!/bin/bash
+set -v
 echo Setting git configuration
 git config --global user.email "arpan.majumder54@gmail.com"
 git config --global user.name "Arpan Majumder"
