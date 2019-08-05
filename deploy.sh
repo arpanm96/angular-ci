@@ -8,7 +8,6 @@ echo Git Status
 git fetch
 
 branch=gh-pages
-git checkout -t -b $branch origin/$branch
 git remote -v && git branch && ls
 
 path="TestApp/dist/test-app/"
@@ -19,6 +18,7 @@ mv -f $path/* .
 
 echo Adding $path to git
 git add .
+git checkout -t -b $branch origin/$branch
 
 echo Added files to git
 git status
