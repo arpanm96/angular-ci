@@ -11,14 +11,15 @@ git fetch
 
 branch=gh-pages
 git checkout -t -b $branch origin/$branch
+git remote -v && ls
 
 path="TestApp/dist/test-app/"
-echo Deleting existing files from Git 
-git rm -rf .
+# echo Deleting existing files from Git
+# git rm -rf .
 git status
 
 echo Copying files to main directory from $path
-cp $path .
+mv -rf $path/* .
 
 echo Adding $path to git
 git add .
@@ -29,4 +30,4 @@ git status
 git commit -m "Update application"
 
 echo Pushing $path to $branch
-git push -f origin $branch:$branch
+git push -f origin $branch
