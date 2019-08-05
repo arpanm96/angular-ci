@@ -6,15 +6,11 @@ git config --global user.name "Arpan Majumder"
 echo Git Status
 git fetch
 
-# path=$build.sourcesDirectory
-# echo Currently inside $path
-
 branch=gh-pages
-git remote -v && ls
+git checkout -t -b $branch origin/$branch
+git remote -v && git branch && ls
 
 path="TestApp/dist/test-app/"
-# echo Deleting existing files from Git
-# git rm -rf .
 git status
 
 echo Copying files to main directory from $path
@@ -27,7 +23,6 @@ echo Added files to git
 git status
 
 git commit -m "Update application"
-git checkout -t -b $branch origin/$branch
 
 echo Pushing $path to $branch
 git push -f origin $branch
