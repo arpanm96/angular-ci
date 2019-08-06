@@ -40,7 +40,7 @@ stages:
   - stage: deploy
     jobs:
       - deployment: Github_Pages
-        environment: github-pages
+        environment: test
         strategy:
           runOnce:
             deploy: 
